@@ -1,0 +1,152 @@
+import React from 'react'
+import './App.css';
+import { Space, Layout, Menu, Breadcrumb, Card, Col, Row, Image, Button, Input } from 'antd';
+import "antd/dist/antd.css";
+import PokemonCard from './components/PokemonCard';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { SearchOutlined, DownloadOutlined, InstagramOutlined, FacebookOutlined, MailOutlined, TwitterOutlined, UserOutlined, SmileOutlined } from '@ant-design/icons';
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+
+
+const { Meta } = Card;
+const { TextArea } = Input;
+PokemonCard cards;
+
+const { Header, Content, Footer } = Layout;
+
+//  function PokemonCard(props) {
+
+//   const [cards, setCards] = useState([]);
+
+//   const getCards = () => {
+//       axios.get('https://api.pokemontcg.io/v1/cards?subtype=Basic')
+//           .then(res => {
+//               setCards(res.data.cards);
+//           })
+//           .catch(err => {
+//               console.log(err);
+//           });
+//   }
+
+//   useEffect(() => {
+//       getCards();
+//   }, [])
+// }
+function App() {
+  return (
+
+    <Layout>
+      <Header style={{ background: 'beige' }}>
+        <div className="logo" />
+        <div class="logoBlog">
+          <img src="https://images.wikidexcdn.net/mwuploads/esssbwiki/thumb/7/77/latest/20111028181540/TituloUniversoPok%C3%A9mon.png/550px-TituloUniversoPok%C3%A9mon.pnghttps://i.pinimg.com/564x/2a/a3/19/2aa31916294f3350372c6286b3e0a7c6.jpg" width={140} />
+        </div>
+        <Menu style={{ textAlign: "center", fontSize: 22 }} theme="white" mode="horizontal" defaultSelectedKeys={['2']} >
+
+          <Menu.Item key="1" >Principal</Menu.Item>
+          <Menu.Item key="cards"></Menu.Item>
+          <Menu.Item key="4">New Pokemon</Menu.Item>
+          <Button icon={<SearchOutlined />} id="button1">Search</Button>
+
+          <br></br>
+
+        </Menu>
+      </Header>
+      <br></br><br></br><br></br>
+      <Content style={{ padding: '0 50px', background: 'beige' }}>
+
+        <Breadcrumb style={{ margin: '16px 0' }}>
+
+          <br></br><br></br><br></br>
+          <Breadcrumb.Item>Principal</Breadcrumb.Item>
+          <Breadcrumb.Item>Catálogo</Breadcrumb.Item>
+        </Breadcrumb>
+        {/* <Content>
+            <Row>
+                {cards.map(card => {
+                    return (
+                        <Col span={6}>
+                            <Space direction="vertical">
+                            <Card title={card.name} bordered={true}>
+                                <Image width src={card.imageUrl} />
+                                <br />
+                                <a href="url" >Ver detalles del Pokemon</a>
+                                <br></br>
+           
+                            </Card>
+                            </Space>
+                        </Col>
+                    )
+                })}
+            </Row>
+            <Row>
+
+                <br /> <br />
+            </Row>
+            </Content> */}
+
+        {cards.map(card => {
+          return (
+            <PokemonCard cards={card} />
+          )
+        })}
+
+
+
+
+
+        <br></br><br></br><br></br>
+        <div id="test9"> Contame que te pareció!! </div>
+        <br></br>
+        <Row>
+          <Col span={12}>
+            <Input Input size="large" placeholder="Tu nombre" prefix={<UserOutlined />} />
+          </Col>
+          <Col span={12}>
+            <Input Input size="large" placeholder="Tu correo" prefix={<MailOutlined />} />
+          </Col>
+        </Row>
+        <br></br>
+        <TextArea rows={4} />
+        <br></br>
+        <Button onClick={() => alert("Gracias por tu mensaje!!")} type="primary">
+          Enviar mensaje
+        </Button>
+
+
+
+
+
+      </Content>
+
+      <Footer style={{ background: 'beige' }}>
+        <Row>
+          <Col span={12}>
+            <div id="test6">
+              <FacebookOutlined /> Blog de Karenchu
+                <br></br>
+              <InstagramOutlined /> @karen_riveros_
+
+                        </div>
+          </Col>
+          <Col span={12}>
+            <div id="test7">
+              <TwitterOutlined /> ri_karenn
+                 <br></br>
+              <MailOutlined />karenriveros2000@gmail.com
+                 </div>
+          </Col>
+        </Row>
+
+        <br></br>
+      </Footer>
+    </Layout>
+  )
+
+}
+
+
+
+
+export default App;

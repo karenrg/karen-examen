@@ -1,36 +1,28 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-
+import React from 'react';
+import { Space, Layout, Menu, Breadcrumb, Card, Col, Row, Image, Button, Input } from 'antd';
+import { SearchOutlined, DownloadOutlined, InstagramOutlined, FacebookOutlined, MailOutlined, TwitterOutlined, UserOutlined, SmileOutlined } from '@ant-design/icons';
+const { TextArea } = Input;
 function About(props) {
-const [counter, setCounter] = useState(0);
-const [types, setTypes] = useState();
-
-useEffect (() => {
-  console.log('useEffect');
-
-  axios.get('/ws/rest/tasks')
-  .then(res => {
-    console.log(res);
-    setTypes (res.data);
-  }).catch(error => {
-    console.log(error);
-  });
-},[]);
-
   return (
     // <h3>Requested Param: {props.match.params.id}</h3>
     <>
-      <h3>About</h3>
-      <p>Contenido del about</p>
-      <p>Counter: {counter} </p>
-      <button onClick={() => setCounter(counter+1)}>Increment counter </button>
-      {
-        types && types.map(type => {
-          return (
-            <p>{type.name}</p>
-          )
-        })
-      }
+      <h3>Home</h3>
+      <div id="test9"> Contame que te pareció!! </div>
+        <br></br>
+        <Row>
+          <Col span={12}>
+            <Input Input size="large" placeholder="Tu nombre" prefix={<UserOutlined />} />
+          </Col>
+          <Col span={12}>
+            <Input Input size="large" placeholder="Tu correo" prefix={<MailOutlined />} />
+          </Col>
+        </Row>
+        <br></br>
+        <TextArea rows={4} />
+        <br></br>
+        <Button onClick={() => alert("Gracias por tu mensaje!!")} type="primary">
+          Enviar mensaje
+        </Button>
     </>
   );
 }
